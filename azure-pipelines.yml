@@ -8,14 +8,14 @@ trigger:
 
 pool:
   name: Default
-
 steps:
-- script: |
-    echo betterscan scan task.
-    export CODE_DIR=${PWD}
-    cd $CODE_DIR
-    docker run -e CODE_DIR -v ${PWD}:${PWD} scanmycode/scanmycode3-ce:worker-cli /bin/sh -c 'cd $CODE_DIR && checkmate init'
-    docker run -e CODE_DIR -v ${PWD}:${PWD} scanmycode/scanmycode3-ce:worker-cli /bin/sh -c 'cd $CODE_DIR && checkmate git init'
-    docker run -e CODE_DIR -v ${PWD}:${PWD} scanmycode/scanmycode3-ce:worker-cli /bin/sh -c 'cd $CODE_DIR && checkmate git analyze --branch `git rev-parse --abbrev-ref HEAD`'
-    docker run -e CODE_DIR -v ${PWD}:${PWD} scanmycode/scanmycode3-ce:worker-cli /bin/sh -c 'cd $CODE_DIR && checkmate issues html'
-  displayName: 'Run a multi-line script'
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
