@@ -9,6 +9,10 @@ trigger:
 pool:
   name: Default
 steps:
+- script: |
+    echo add_class_folder;
+    mkdir ./build/WEB-INF/classes
+  displayName: add class folder
 - task: Ant@1
   inputs:
     buildFile: 'build.xml'
