@@ -35,4 +35,4 @@ steps:
     scanPath: './**/*.jar'
     format: 'HTML'
     enableVerbose: Yes
-    additionalArguments: '--dotnet /usr/bin/dotnet'
+    additionalArguments: '--dotnet /home/kadavul/.dotnet/dotnet'
