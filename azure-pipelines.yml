@@ -34,3 +34,5 @@ steps:
     projectName: 'bodge_it'
     scanPath: './**/*.jar'
     format: 'HTML'
+    enableVerbose: Yes
+    
