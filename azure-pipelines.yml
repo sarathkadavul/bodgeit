@@ -29,3 +29,8 @@ steps:
     java -Xmx4G -jar deepdive-1.5.11-beta/lib/discotek.deepdive-engine-1.5.11-beta.jar -decompile=true -project-directory=deepdive-1.5.11-beta/sample-config -output-directory=deepdive_result ./build/bodgeit.war
   displayName: deepdive_scan
   continueOnError: Yes
+- task: dependency-check-build-task@6
+  inputs:
+    projectName: 'bodge_it'
+    scanPath: './**/*.jar'
+    format: 'HTML'
